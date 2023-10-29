@@ -16,7 +16,7 @@ class CategoryGridItem extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(16),
 
-      // in inWell u get a feedback but if i used GestureDetector then you get no feedback
+
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
