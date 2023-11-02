@@ -6,15 +6,26 @@ class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
     required this.meal,
+    required this.onTOggleFavorite,
   });
 
   final Meal meal;
+
+  final void Function(Meal meal) onTOggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              onTOggleFavorite(meal);
+            },
+            icon: const Icon(Icons.star),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -25,19 +36,25 @@ class MealDetailsScreen extends StatelessWidget {
               width: double.infinity,
               fit: BoxFit.cover,
             ),
-            const SizedBox(height: 14,),
-            Text('Ingredients',style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold
-            ),),
-            const SizedBox(height: 14,)
-            ,
+            const SizedBox(
+              height: 14,
+            ),
+            Text(
+              'Ingredients',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 14,
+            ),
             for (final ingredient in meal.ingredients)
-            Text(ingredient,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Theme.of(context).colorScheme.onBackground
-            ),),
-                      const SizedBox(
+              Text(
+                ingredient,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground),
+              ),
+            const SizedBox(
               height: 24,
             ),
             Text(
@@ -51,15 +68,13 @@ class MealDetailsScreen extends StatelessWidget {
             ),
             for (final steps in meal.steps)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12,
-                vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Text(
                   steps,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Theme.of(context).colorScheme.onBackground),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground),
                 ),
               ),
           ],
