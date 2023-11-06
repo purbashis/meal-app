@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals/data/dummy_data.dart';
+
 import 'package:meals/models/meal.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/categories.dart';
@@ -76,7 +76,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final availableMeals = dummyMeals.where((meal) {
+    final availableMeals = .where((meal) {
       if (_selectedFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
         return false;
       }
