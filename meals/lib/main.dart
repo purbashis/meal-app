@@ -16,6 +16,7 @@ final theme = ThemeData(
 
 void main() {
   runApp(
+    //here we are using ProviderScope to wrap our app and make providers available
     const ProviderScope(
       child: App(),
     ),

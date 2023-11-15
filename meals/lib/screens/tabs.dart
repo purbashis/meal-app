@@ -77,6 +77,8 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //here mealsProvider is used to fetch meals from provider
+    //here ref.watch is used to watch for changes in provider
     final meals =ref.watch(mealsProvider);
     final availableMeals = meals.where((meal) {
       if (_selectedFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
